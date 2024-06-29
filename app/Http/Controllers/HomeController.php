@@ -33,7 +33,8 @@ class HomeController extends Controller
         $lastLoginTime = Carbon::parse($user->created_at);
         $totalMessagesSent =$user->messages()->count();
         $lastFiveMessages = $user->messages()->latest()->take(5)->get(); 
-        // dd(23432,  $totalMessagesSent);
+        $lastMessageCount = $lastFiveMessages->count();    
+            // dd(23432,  $totalMessagesSent);
         return view('home')->with([
             'lastLoginTime' => $lastLoginTime, 
             'totalMessagesSent'=>  $totalMessagesSent,
